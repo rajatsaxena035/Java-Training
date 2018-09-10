@@ -9,15 +9,18 @@ class ArrList{
 		a.add("d");
 		
 		for(String str:a){
-			System.out.print(str + "\t");
+			System.out.println(str);
 		}
 		
-		a.remove("a");
+		/*a.remove("a");
 		
 		System.out.println();
 		
 		for(String str:a){
 			System.out.print(str + "\t");
-		}
+		}*/
+
+		a.forEach(aa -> System.out.println(aa));
+		a.stream().forEach(aa -> System.out.println(aa));
 	}
 }

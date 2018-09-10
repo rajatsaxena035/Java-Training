@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
 class MiniCompiler
 {
@@ -111,6 +114,10 @@ class MiniCompiler
 		{
 			System.out.println(code_statements[i] + ' ');
 		}
+
+		System.out.println("-----------");
+
+		code_statements.forEach(aCode -> System.out.println(aCode));
 
 		// ------ Print [Stop] ----------
 	}
