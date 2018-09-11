@@ -3,6 +3,8 @@ import java.util.*;
 class AddressBook
 {
 	private String introduction;
+	
+	// LinkedList is used for storing Contacts
 	LinkedList<Contact> contacts = new LinkedList<Contact>();
 
 	AddressBook(String intro)
@@ -27,7 +29,7 @@ class AddressBook
 
 	public void deleteContact(Contact c)
 	{
-		
+		contacts.remove(c);
 	}
 
 	public List<Contact> getAllContacts()
