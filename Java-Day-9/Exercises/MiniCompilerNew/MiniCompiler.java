@@ -25,18 +25,7 @@ class MiniCompiler extends AbstractMiniCompiler
 			
 			// ------ int [Start] ---------
 
-			if(code_statements[i].contains(" int") || code_statements[i].contains("(int"))
-			{
-				code_statements[i] = code_statements[i].replaceAll("int","i_store");
-			}
-
-			if( code_statements[i].contains("int") )
-			{
-				if(code_statements[i].indexOf("int") == 0)
-				{
-					code_statements[i] = code_statements[i].replaceAll("int","i_store");
-				}
-			}
+			code_statements[i] = convertInt(code_statements[i]);			
 
 			// ------ int [Stop] ---------
 
@@ -44,18 +33,7 @@ class MiniCompiler extends AbstractMiniCompiler
 
 			// ------ float [Start] ---------
 
-			if(code_statements[i].contains(" float") || code_statements[i].contains("(float"))
-			{
-				code_statements[i] = code_statements[i].replaceAll("float","i_store");
-			}
-
-			if( code_statements[i].contains("float") )
-			{
-				if(code_statements[i].indexOf("float") == 0)
-				{
-					code_statements[i] = code_statements[i].replaceAll("float","f_store");
-				}
-			}
+			code_statements[i] = convertFloat(code_statements[i]);			
 
 			// ------ float [Stop] ---------
 
@@ -63,10 +41,7 @@ class MiniCompiler extends AbstractMiniCompiler
 
 			// ------ object [Start] ---------
 
-			if(code_statements[i].contains(" new ") || code_statements[i].contains("=new"))
-			{
-				code_statements[i] = "A_store";
-			}			
+			code_statements[i] = convertNew(code_statements[i]);			
 
 			// ------ object [Stop] ---------
 
@@ -74,10 +49,7 @@ class MiniCompiler extends AbstractMiniCompiler
 
 			// ------ Function Invocation [Start] ---------
 
-			if(code_statements[i].contains("(") && code_statements[i].contains(")") && !code_statements[i].contains("{"))
-			{
-				code_statements[i] = "invoke_special: "+code_statements[i];
-			}			
+			code_statements[i] = convertCall(code_statements[i]);
 
 			// ------ Function Invocation [Stop] ---------
 
@@ -125,5 +97,71 @@ class MiniCompiler extends AbstractMiniCompiler
 
 		// decorate the output [End]
 		System.out.println("\n====================\n");
+	}
+
+
+	// Helper Methods
+
+	String convertInt(String statement)
+	{
+		if(statement.contains(" int") || statement.contains("(int"))
+		{
+			statement = statement.replaceAll("int","i_store");
+		}
+
+		if( statement.contains("int") )
+		{
+			if(statement.indexOf("int") == 0)
+			{
+				statement = statement.replaceAll("int","i_store");
+			}
+		}
+
+		return statement;
+	}
+
+	String convertFloat(String statement)
+	{
+		if(statement.contains(" float") || statement.contains("(float"))
+		{
+			statement = statement.replaceAll("float","i_store");
+		}
+
+		if( statement.contains("float") )
+		{
+			if(statement.indexOf("float") == 0)
+			{
+				statement = statement.replaceAll("float","f_store");
+			}
+		}
+		return statement;
+	}
+
+	String convertNew(String statement)
+	{
+		if(statement.contains(" new ") || statement.contains("=new"))
+		{
+			statement = "A_store";
+		}			
+
+		return statement;
+	}
+
+	String convertCall(String statement)
+	{
+		if(statement.contains("(") && statement.contains(")") && !statement.contains("{"))
+		{
+			statement = "invoke_special: "+statement;
+		}
+		return statement;
+	}
+
+	String unpairedBrackets(String statement)
+	{
+		if(statement.contains("(") && statement.contains(")") && !statement.contains("{"))
+		{
+			statement = "invoke_special: "+statement;
+		}
+		return statement;
 	}
 }

@@ -4,11 +4,11 @@
 	@since 2018-09-03
 	@version 0.2.3
 	@author Rajat Saxena
-	 
+
 */
 
 
-class MiniCompilerTest
+public class MiniCompilerTest
 {
 	public static void main(String[] args)
 	{
