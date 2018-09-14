@@ -1,3 +1,5 @@
+import java.io.*;
+
 class MiniCompiler extends AbstractMiniCompiler
 {
 	// Splits the whole code string into statements using ; { }
@@ -8,16 +10,12 @@ class MiniCompiler extends AbstractMiniCompiler
 		String[] code_statements = code.split("(?<=;)|(?<=\\{)|(?<=\\})");
 		
 		// removing unneeded whitespaces from each statement
-		/*for(int i = 0; i<code_statements.length; i++)
+		for(int i = 0; i<code_statements.length; i++)
 		{
 			code_statements[i] = code_statements[i].trim();
-		}*/
+		}
 
-		//STREAM
-		Stream<String> code_stream = Stream.of(code_statements);
-		code_stream = code_statements.stream().map(s -> s.trim());
-
-		return code_stream;
+		return code_statements;
 	}
 
 	// Converts int to i_store, float to f_store, new to A_store, etc
@@ -62,12 +60,14 @@ class MiniCompiler extends AbstractMiniCompiler
 	}
 
 	// Prints the whole code with line numbers for different functions
-	void printLineNumbers(String[] code_statements)
+	String[] printLineNumbers(String[] code_statements)
 	{
 		int str_length, line_no = 0;
 		
 		// decorate the output [Start]
 		System.out.println("\n====================\n");
+
+		String[] compiled = new String[code_statements.length];
 
 		for(int i = 0; i<code_statements.length; i++)
 		{
@@ -77,7 +77,7 @@ class MiniCompiler extends AbstractMiniCompiler
 			if((! code_statements[i].contains("class") && code_statements[i].charAt(str_length-1) == '{') || line_no > 0)
 			{
 				if(line_no == 0) System.out.println();
-				System.out.println("Line " + line_no + ": " + code_statements[i]);
+				compiled[i] = "Line " + line_no + ": " + code_statements[i];
 				
 				//Checking "end" of a function
 				if(code_statements[i].equals("}"))
@@ -91,16 +91,48 @@ class MiniCompiler extends AbstractMiniCompiler
 			}
 			else if( code_statements[i].contains("class") )
 			{
-				System.out.println(code_statements[i] + '\n');	
+				compiled[i] = code_statements[i] + System.getProperty("line.separator");	
 			}
 			else
 			{
-				System.out.println(code_statements[i]);
+				compiled[i] = code_statements[i];
 			}
 		}
 
 		// decorate the output [End]
 		System.out.println("\n====================\n");
+
+		return compiled;
+	}
+
+	void outputClassFile(String[] compiled) throws IOException
+	{
+		File to_file = new File("example.class");
+
+		FileOutputStream to = null;
+
+		try
+		{
+			to = new FileOutputStream(to_file,true);
+			for(int i=0; i<compiled.length; i++)
+			{
+				byte[] buffer = compiled[i].getBytes();
+				int bytes_read=buffer.length;
+				
+				to.write(buffer,0,bytes_read);
+			}
+				
+		}
+		finally
+		{
+			if(to != null)
+				try
+				{
+					to.close();
+
+				}
+				catch(IOException e) {;}
+		}
 	}
 
 
@@ -160,12 +192,4 @@ class MiniCompiler extends AbstractMiniCompiler
 		return statement;
 	}
 
-	String unpairedBrackets(String statement)
-	{
-		if(statement.contains("(") && statement.contains(")") && !statement.contains("{"))
-		{
-			statement = "invoke_special: "+statement;
-		}
-		return statement;
-	}
 }
