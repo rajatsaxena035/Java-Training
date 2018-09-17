@@ -2,38 +2,57 @@ import java.util.stream.*;
 
 class CheckPair
 {
-	String code = "class Test" +
-						"{" +
-							"int a;" +
-							"float b;" +
-							
-							"void area(int x)" +
+	public static void main(String[] args) {
+		
+		String code = "class Test" +
 							"{" +
-								"System.out.println(\"Age = \" + x);" +
-							"}" +
-							
-							"float perimeter(float y)" +
-							"{" +
-								"float perimeter = 2*b;" +
-								"return perimeter;" +
-							"}" +
-							
-							"public static void main(String[] args)" +
-							"{" +
-								"String s = \"abc\";" +
-								"Test t = new Test();" +
-								"t.area(3);" +
-							"}"+
-						"}";
+								"int a;" +
+								"float b;" +
+								
+								"void area(int x)" +
+								"{" +
+									"System.out.println(\"Age = \" + x);" +
+								"}" +
+								
+								"float perimeter(float y)" +
+								"{" +
+									"float perimeter = 2*b;" +
+									"return perimeter;" +
+								"}" +
+								
+								"public static void main(String[] args)" +
+								"{" +
+									"String s = \"abc\";" +
+									"Test t = new Test();" +
+									"t.area(3);" +
+								"}"+
+							"}";
 
-	int curly_begin = code.stream().filter(s -> s.equals('{')).count();
-	int curly_end = code.filter(s -> s.equals('}')).count();
-	int round_begin = code.filter(s -> s.equals('(')).count();
-	int round_end = code.filter(s -> s.equals(')')).count();
-	int square_begin = code.filter(s -> s.equals('[')).count();
-	int square_end = code.filter(s -> s.equals(']')).count();
-	int angle_begin = code.filter(s -> s.equals('<')).count();
-	int angle_end = code.filter(s -> s.equals('>')).count();
+		Stream<String> code_stream = Stream.of(code);
 
-	// System.out.println(curly_begin);
+		long curly_begin = code_stream.filter(s -> s.equals('p')).count();
+		
+/*		code_stream = Stream.of(code);
+		long curly_end = code_stream.filter(s -> s.equals('}')).count();
+		
+		code_stream = Stream.of(code);
+		long round_begin = code_stream.filter(s -> s.equals('(')).count();
+		
+		code_stream = Stream.of(code);
+		long round_end = code_stream.filter(s -> s.equals(')')).count();
+		
+		code_stream = Stream.of(code);
+		long square_begin = code_stream.filter(s -> s.equals('[')).count();
+		
+		code_stream = Stream.of(code);
+		long square_end = code_stream.filter(s -> s.equals(']')).count();
+		
+		code_stream = Stream.of(code);
+		long angle_begin = code_stream.filter(s -> s.equals('<')).count();
+		
+		code_stream = Stream.of(code);
+		long angle_end = code_stream.filter(s -> s.equals('>')).count();*/
+
+		System.out.println(curly_begin);
+	}
 }

@@ -2,7 +2,7 @@
 	Converting the java code to the compiled bytecode
 
 	@since 2018-09-03
-	@version 0.2.3
+	@version 0.3.1
 	@author Rajat Saxena
 
 */
