@@ -1,49 +1,57 @@
 import java.util.stream.*;
+import java.io.*;
+import java.nio.file.*;
+
 
 class MiniCompiler extends AbstractMiniCompiler
 {
 	static int line_no = 0;
 
 	// Check unpaired brackets
-	void checkBrackets(String code) throws UnpairedBracketsException
+	void checkBrackets(String code)
 	{
-		int curly, square, round, angle;
-		curly = square = round = angle = 0;
-		for(int i = 0; i < code.length(); i++)
+		try
 		{
-			char c = code.charAt(i);
-			if(c == '{') curly++;
-			else if(c == '(') round++;
-			else if(c == '[') square++;
-			else if(c == '<') angle++;
-			else if(c == '}')
+			int curly, square, round, angle;
+			curly = square = round = angle = 0;
+			for(int i = 0; i < code.length(); i++)
 			{
-				curly--;
-				if(curly < 0) throw new UnpairedBracketsException("Curly Brackets unmatched");
+				char c = code.charAt(i);
+				if(c == '{') curly++;
+				else if(c == '(') round++;
+				else if(c == '[') square++;
+				else if(c == '<') angle++;
+				else if(c == '}')
+				{
+					curly--;
+					if(curly < 0) throw new UnpairedBracketsException("Curly Brackets unmatched");
+				}
+				else if(c == ')')
+				{
+					round--;
+					if(round < 0) throw new UnpairedBracketsException("Round Brackets unmatched");
+				}
+				else if(c == ']')
+				{
+					square--;
+					if(square < 0) throw new UnpairedBracketsException("Square Brackets unmatched");
+				}
+				else if(c == '>')
+				{
+					angle--;
+					if(angle < 0) throw new UnpairedBracketsException("Angle Brackets unmatched");
+				}
 			}
-			else if(c == ')')
-			{
-				round--;
-				if(round < 0) throw new UnpairedBracketsException("Round Brackets unmatched");
-			}
-			else if(c == ']')
-			{
-				square--;
-				if(square < 0) throw new UnpairedBracketsException("Square Brackets unmatched");
-			}
-			else if(c == '>')
-			{
-				angle--;
-				if(angle < 0) throw new UnpairedBracketsException("Angle Brackets unmatched");
-			}
+
+			if(curly != 0) throw new UnpairedBracketsException("Curly Brackets unmatched");
+			if(round != 0) throw new UnpairedBracketsException("Round Brackets unmatched");
+			if(square != 0) throw new UnpairedBracketsException("Square Brackets unmatched");
+			if(angle != 0) throw new UnpairedBracketsException("Angle Brackets unmatched");	
 		}
-
-		if(curly != 0) throw new UnpairedBracketsException("Curly Brackets unmatched");
-		if(round != 0) throw new UnpairedBracketsException("Round Brackets unmatched");
-		if(square != 0) throw new UnpairedBracketsException("Square Brackets unmatched");
-		if(angle != 0) throw new UnpairedBracketsException("Angle Brackets unmatched");
-
-
+		catch(UnpairedBracketsException e)
+		{
+			System.out.println(e.getMessage());
+		}
 		
 		/*long curly_open = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals('{')).count();
 		long curly_close = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals('}')).count();
@@ -105,12 +113,34 @@ class MiniCompiler extends AbstractMiniCompiler
 		return converted_statement;
 	}
 
+
+	// Converts int to i_store, float to f_store, new to A_store, etc
+	String convertVariable(String[] code_statements)
+	{
+		int k = 0;
+		for(int i=0; i<code_statements.length; i++)
+		{
+			String[] words = code_statements.split(" ");
+			for(int j=0; j<words.length; j++)
+			{
+				if(!MatchKeywords.match(words[j]))
+				{
+					if(words[j-1] == "int")
+					{
+						words[j] = "i"+k;	
+					}
+				}
+			}	
+		}
+	}
+
+
 	// Prints the whole code with line numbers in case of different functions
 	String putLineNumbers(String statement)
 	{
 		int str_length = statement.length(); 
 		int lno = MiniCompiler.line_no;
-		
+	
 		//Checking "start" of a function
 		if((! statement.contains("class") && statement.charAt(str_length-1) == '{') || lno > 0)
 		{	
@@ -210,5 +240,56 @@ class MiniCompiler extends AbstractMiniCompiler
 	String toStr(String statement)
 	{
 		return statement;
+	}
+
+	String inputJavaFile(String fileName)
+	{
+		String code = "";
+		try
+		{
+			 code = new String(Files.readAllBytes(Paths.get(fileName)));
+			 code = code.replaceAll("\n"," ");
+		}
+		catch(IOException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		return code;
+	}
+
+	void outputClassFile(String[] compiled, String fileName)
+	{
+		String ofn = fileName.split("\\.")[0] + ".class";
+		File to_file = new File(ofn);
+
+		FileOutputStream to = null;
+
+		try
+		{
+			to = new FileOutputStream(to_file);
+			for(int i=0; i<compiled.length; i++)
+			{
+				compiled[i] += System.lineSeparator(); 
+				byte[] buffer = compiled[i].getBytes();
+				int bytes_read=buffer.length;
+				
+				to.write(buffer,0,bytes_read);
+			}
+				
+		}
+		catch(IOException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		finally
+		{
+			if(to != null)
+				try
+				{
+					to.close();
+
+				}
+				catch(IOException e) {;}
+		}
 	}
 }

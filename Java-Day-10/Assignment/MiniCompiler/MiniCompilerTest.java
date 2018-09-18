@@ -19,10 +19,12 @@ public class MiniCompilerTest
 		// get the MiniCompiler instance ( new keyword not used )
 		MiniCompiler compiler = MiniCompilerProducer.getMiniCompiler();
 		
-		try
-		{
+		
 			// take the code string from command-line argument 
-			compiler.code = args[0];
+			String fileName = args[0];
+
+
+			compiler.code = compiler.inputJavaFile(fileName).trim();
 
 			// split "code string" to "code statements"
 			compiler.checkBrackets(compiler.code);
@@ -31,19 +33,14 @@ public class MiniCompilerTest
 			// split "code string" to "code statements"
 			code_statements = compiler.splitCode(compiler.code);
 
-			System.out.println();
+			code_statements = compiler.convertVariables(code_statements);		
 
 			Stream<String> code_stream = Stream.of(code_statements);
-			code_stream.map(compiler::convertKeyword)
+			String[] compiled = code_stream.map(compiler::convertKeyword)
 						.map(compiler::putLineNumbers)
-						.forEach(System.out::println);
+						.toArray(String[]::new);
 
-			System.out.println();	
-		}
-		catch(UnpairedBracketsException e)
-		{
-			System.out.println(e.getMessage());
-		}
+			compiler.outputClassFile(compiled,fileName);	
 		
 	}
 }
