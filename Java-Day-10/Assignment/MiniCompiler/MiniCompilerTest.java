@@ -23,23 +23,34 @@ public class MiniCompilerTest
 			// take the code string from command-line argument 
 			String fileName = args[0];
 
-
+			// input java file
 			compiler.code = compiler.inputJavaFile(fileName).trim();
+			
 
 			// split "code string" to "code statements"
 			compiler.checkBrackets(compiler.code);
+			
 			//compiler.checkUndeclared(compiler.code);
 
 			// split "code string" to "code statements"
 			code_statements = compiler.splitCode(compiler.code);
+			
+			// validate public class
+			compiler.validatePublic(code_statements, fileName);
 
-			code_statements = compiler.convertVariables(code_statements);		
-
+			// convert variable names
+			code_statements = compiler.convertVariable(code_statements);		
+			
+			// stream of code statements
 			Stream<String> code_stream = Stream.of(code_statements);
+			
+			// convert keywords and put line numbers
 			String[] compiled = code_stream.map(compiler::convertKeyword)
-						.map(compiler::putLineNumbers)
-						.toArray(String[]::new);
-
+					.map(compiler::iLoad)	
+					.map(compiler::putLineNumbers)
+					.toArray(String[]::new);
+			
+			// output class file
 			compiler.outputClassFile(compiled,fileName);	
 		
 	}

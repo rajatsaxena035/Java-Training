@@ -1,3 +1,4 @@
+import java.util.*;
 import java.util.stream.*;
 import java.io.*;
 import java.nio.file.*;
@@ -52,16 +53,39 @@ class MiniCompiler extends AbstractMiniCompiler
 		{
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	
+	void validatePublic(String[] code_statements, String filename)
+	{
+		filename = filename.split("\\.")[0];
 		
-		/*long curly_open = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals('{')).count();
-		long curly_close = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals('}')).count();
-		long round_open = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals('(')).count();
-		long round_close = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals(')')).count();
-		long square_open = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals('[')).count();
-		long square_close = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals(']')).count();
-		long angle_open = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals('<')).count();
-		long angle_close = code.chars().mapToObj(e -> (char)e).filter(s -> s.equals('>')).count();*/
-
+		try
+		{
+			for(String a : code_statements)
+			{
+				if(a.contains("class") && a.contains("public"))
+				{
+					String[] as = a.split(" ");
+					int j = 0;
+					for(j=0; j<as.length; j++)
+					{
+						if(as[j].equals(filename))
+						{
+							break;
+						}
+					}
+					if(j==as.length)
+					{
+						throw new PublicClassException("Public class name not same as file name");
+					}
+				}
+			}
+		}
+		catch(PublicClassException e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 
 
@@ -115,23 +139,57 @@ class MiniCompiler extends AbstractMiniCompiler
 
 
 	// Converts int to i_store, float to f_store, new to A_store, etc
-	String convertVariable(String[] code_statements)
+	@Override
+	String[] convertVariable(String[] code_statements)
 	{
-		int k = 0;
+		Map< String,String> hm =  new HashMap< String,String>();
+		int ki = 0, kf = 0;
 		for(int i=0; i<code_statements.length; i++)
 		{
-			String[] words = code_statements.split(" ");
+			String[] words = code_statements[i].split(" ");
+			for(String word : words)
+			{
+				//System.out.println(i+"=="+word);
+			}
 			for(int j=0; j<words.length; j++)
 			{
 				if(!MatchKeywords.match(words[j]))
 				{
-					if(words[j-1] == "int")
+					//System.out.println();
+					if(j>0 && words[j-1].equals("int") && !words[j].contains("("))
 					{
-						words[j] = "i"+k;	
+						String inter_i = "i"+Character.forDigit(ki,10);
+						hm.put(words[j], inter_i); 
+						words[j] = inter_i;
+						ki++;
+						
+						//System.out.println(words[j]);
+					}
+					
+					else if(j>0 && words[j-1].equals("float") && !words[j].equals("("))
+					{
+						String inter_f = "f"+Character.forDigit(kf,10);
+						hm.put(words[j], inter_f);
+						words[j] = inter_f;
+						kf++;
+					}
+					
+					else
+					{
+						for (Map.Entry<String, String> entry : hm.entrySet())
+						{
+							//System.out.println(entry.getKey());
+						    if(words[j].equals(entry.getKey()) || words[j].equals(entry.getKey()+";"))
+						    {
+						    	words[j] = entry.getValue();
+						    }
+						}
 					}
 				}
-			}	
+			}
+			code_statements[i] = String.join(" ", words);
 		}
+		return code_statements;
 	}
 
 
@@ -153,15 +211,28 @@ class MiniCompiler extends AbstractMiniCompiler
 			{
 				MiniCompiler.line_no++;
 			}
-			statement = "Line " + lno + ": " + statement;
+			
+			
+			
+				statement = "Line " + lno + ": " + statement;
+			
+			
 			//if(lno == 0) x = System.getProperty("line.separator") + x;
 		}
-		/*else if( x.contains("class") )
-		{
-			x = x + System.getProperty("line.separator");	
-		}*/
 	
 		return statement;	
+	}
+	
+	String iLoad(String statement)
+	{
+		if(statement.contains("="))
+		{
+			String[] arr = statement.split("=");
+			arr[1] = "\t    i_load "+arr[0]+" "+arr[1];
+			arr[0] = "i_load "+arr[0]+"\n";
+			statement = String.join(" ", arr);
+		}
+		return statement;
 	}
 
 

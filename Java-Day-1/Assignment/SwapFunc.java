@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 class Swapper
 {
-	double a, b;
+	float a ;
+	float b ;
 
 	Swapper()
 	{
@@ -17,7 +18,7 @@ class Swapper
 
 	void swap()
 	{
-		double c;
+		float c ;
 		c = b;
 		b = a;
 		a = c;
@@ -32,7 +33,7 @@ class SwapFunc
 		sw.swap();
 
 		System.out.println("After Swapping:");
-		System.out.println("a = " + sw.a);
-		System.out.println("b = " + sw.b);
+		System.out.println("a: " + sw.a);
+		System.out.println("b: " + sw.b);
 	}
 }

@@ -11,4 +11,7 @@ abstract class AbstractMiniCompiler
 
 	// abstract method for converting code to bytecode
 	abstract String convertKeyword(String statement);
+	
+	// abstract method for converting code to bytecode
+	abstract String[] convertVariable(String[] statement);
 }
