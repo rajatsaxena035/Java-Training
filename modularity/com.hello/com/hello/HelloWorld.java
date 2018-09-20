@@ -2,7 +2,7 @@ package com.hello;
 
 public class HelloWorld
 {
-	public String sayHello()
+	public String sayHelloWorld()
 	{
 		return "Hello World!!";
 	}

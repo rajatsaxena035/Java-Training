@@ -9,7 +9,7 @@ public class Hello {
 			//register the driver class
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			//creating class
+			//creating connection
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
 			Statement stmt = con.createStatement();
 			
