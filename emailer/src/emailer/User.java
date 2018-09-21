@@ -12,7 +12,7 @@ class User {
 		
 		objC.loginRegister();
 		int choice=sc.nextInt();
-		objM.setChoice(choice);
+		//objM.setChoice(choice);
 		objC.choiceOperation(choice);
 		int n=0;
 		String username = "";
@@ -22,11 +22,50 @@ class User {
 		n=objC.validateUsername(choice, username);
 		}
 		boolean match=false;
+		int step=1;
 		while(!match)
+		{	
+			if(choice==1)
+			{
+				String password=acceptPassword();
+				objC.askConfirmPassword();
+				String confirmPassword=acceptPassword();
+				match=objC.matchPassword(username, password, confirmPassword);
+			}
+			else if(choice==2)
+			{
+				String password=acceptPassword();
+				match=objC.matchUsernamePassword(username, password);
+			}
+		}
+		int menu=sc.nextInt();
+		objC.openMenuSelection(menu);
+		if(menu==3)
 		{
-			String password=acceptPassword();
-			String confirmPassword=acceptPassword();
-			match=objC.matchPassword(username, password, confirmPassword);
+			String recipient="";
+			while(sc.hasNextLine())
+			{
+				String[] tokens=sc.nextLine().split("\\s");
+				for (String value : tokens)
+				{
+                    			recipient=recipient+" " +(value);
+				}
+			}//arrays for more than one recipient
+			String[] recipient_array=recipient.split("\n");
+			objC.composeMail(1);
+			String subject=sc.next();
+			objC.composeMail(2);
+			String content="";
+			while(sc.hasNextLine())
+			{
+				String[] tokens=sc.nextLine().split("\\s");
+				for (String value : tokens)
+				{
+                    			content=content+" " +(value);
+				}
+			}
+			int option=sc.nextInt();
+			objC.selectOption(option);
 		}
 		/*objC.usernameCheck()
 		if(choice==1)
