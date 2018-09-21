@@ -212,9 +212,20 @@ class MiniCompiler extends AbstractMiniCompiler
 				MiniCompiler.line_no++;
 			}
 			
-			
-			
+			if(statement.contains("\n"))
+			{
+				String arr[] = statement.split("\n");
+				statement = "Line " + lno + ": " + arr[0] + "\n";
+				MiniCompiler.line_no++;
+				lno++;
+				statement += "Line " + lno + ": " + arr[1].trim();
+			}
+			else
+			{
 				statement = "Line " + lno + ": " + statement;
+			}
+			
+				
 			
 			
 			//if(lno == 0) x = System.getProperty("line.separator") + x;
