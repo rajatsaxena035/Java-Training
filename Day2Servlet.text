@@ -1,0 +1,41 @@
+Cookie class supported by servlet is javax.servlet.http.Cookie;
+There are two types of cookies - Persistent and Non-persistent cookies. 
+Persistent cookies have age factor attached and are valisd for multiple sessions, removed via programming only.
+Non-persistent cookies are valid for the particulat session. They are removed when user closes the browser.
+Every cookie has:
+1. A name-value pair
+2. Domain, path
+3. Max-Age, Expires
+4. secure and HttpOnly
+5. Comment
+
+Cookie class has two constructors:
+1. Cookie()
+2. Cookie(String name, String value)
+
+Methods of Cookie class:
+1. void addCookie(Cookie ck)
+2. Cookie[] getCookies()
+3. void setMaxAge()
+4. String getName()
+5. String getValue()
+6. void setName()
+7. void setValue()
+
+To kill cookie:
+Cookie ck = new Cookie("user","");
+ck.setMaxAge(0);
+response.addCookie(ck);
+
+HttpSession:
+===========
+
+1. getSession()
+2. getSession(boolean create)
+HttpSession Interface methods:
+1. isNew()
+2. getId()
+
+Destroy session:
+invalidate()
+After session is invalid, accessing it will give IllegalStateException
