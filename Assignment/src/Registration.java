@@ -1,5 +1,6 @@
 
-
+import java.sql.*;
+import java.util.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +36,29 @@ public class Registration extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username = request.getParameter("username");
+		String userpass = request.getParameter("userpass");
+		String confpass = request.getParameter("confpass");
+		if(confpass.equals(userpass))
+		{
+			try
+			{
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@10.0.33.190:1521:xe", "hr", "hr");
+				PreparedStatement stmt = con.prepareStatement("insert into users values(?,?)");
+				
+				stmt.setString(1,username);
+				stmt.setString(2,userpass);
+				
+				int result = stmt.executeUpdate();
+				con.close();
+			} 
+			catch (Exception e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

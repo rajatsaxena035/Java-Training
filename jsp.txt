@@ -1,0 +1,73 @@
+JSP
+=========
+JSP converts it into servlet, where everything is converted into print statements.
+
+Phases of JSP:
+==============
+Compilation
+Initialization - jspinit()
+Execution - _jspservice()
+Cleanup
+
+Elements in JSP:(3)
+================
+1. Scripting
+2. Directive
+3. Action
+
+Declaration:
+
+Local Variable:
+================
+<% int x=10; %>
+
+Instance Varaible:
+=================
+<%! int x=10; %>
+
+Expression
+==========
+<%-- comment --%> = JSP comment
+<!-- comment --> = Html comment
+<\% static literal
+%\> static literal
+\'
+\"
+
+<%@ page... %>  =  page dependentn attributes
+<%@ include... %>  =  includes a file during translation phase
+<%@ taglib... %>  =  declares a tag library
+
+JSP Actions:
+============
+jsp:include
+jsp:useBean
+jsp:setProperty
+jsp:getProperty
+jsp:forward
+jsp:plugin
+jsp:element
+jsp:attribute
+
+JSP Implicit 
+
+AttributeList
+=============
+language="scriptingLanguage"
+extends="className"
+import="importList"
+session="true|false"
+buffer="none|sizekb"
+
+Default Imports:
+java.lang.*
+javax.servlet.*
+javax.servlet.jsp.*
+javax.servlet.http.*
+
+==========================
+getParameter()
+getParameterValues()
+getParameterNames()
+getInputStream()
+                                                   

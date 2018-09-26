@@ -1,0 +1,28 @@
+Filters are used by using the Filter interface and overriding its doFilter method.
+Uses:
+1. Authenticate a request
+2. Modify a request or a response
+3. Block the request and response form going through
+
+Servlet Filter Interface:
+init()
+doFilter()
+destroy()
+
+Types of Filters:
+Authenticate Filters
+Data compression filters
+Encryption filter
+Resource access events
+Image Conversion
+Logging and Auditing
+MIME-TYPE Chain Filters
+XSL/T Filters that transform XML content.
+
+Annotations of web filters: @WebFilter
+asyncSupported
+dispatcherTypes
+filterName
+initParams
+servletNames
+urlPatterns
