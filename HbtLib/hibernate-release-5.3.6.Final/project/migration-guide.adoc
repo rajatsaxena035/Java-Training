@@ -1,0 +1,198 @@
+= 5.3 Migration Guide
+:toc:
+
+This guide discusses migration from Hibernate ORM version 5.2 to version 5.3.  For migration from
+earlier versions, see any other pertinent migration guides as well.
+
+== Background
+
+Hibernate 5.3 adds support for the JPA 2.2 specification
+
+
+== Known changes
+
+=== Changes to positional query parameter handling
+
+This really breaks down into 2 related changes:
+
+* Support for JDBC-style parameter declarations in HQL/JPQL queries has been removed.  This feature
+    has been deprecated since 4.1 and removing it made implementing the second change, so we decided
+    to remove that support.  JDBC-style parameter declaration is still supported in native-queries.
+* Since JPA positional parameters really behave more like named parameters (they can be repeated,
+    declared in any order, etc.) Hibernate used to treat them as named parameters - it relied on
+    Hibernate's JPA wrapper to interpret the JPA setParameter calls and properly handle delegating to
+    the named variant.  This is actually a regression in 5.2 as it causes
+    `javax.persistence.Parameter#getPosition` to report `null`.
+
+For JDBC-style parameter declarations in native queries, we have also moved to using one-based
+instead of zero-based parameter binding to be consistent with JPA.  That can temporarily be
+reverted by setting the `hibernate.query.sql.jdbc_style_params_base` setting to `true` which
+reverts to expecting zero-based binding.
+
+
+=== Change in the `@TableGenerator` stored value
+
+In order to be compliant with the JPA specification, the sequence value stored by Hibernate 5.3 in the database table used by the `javax.persistence.TableGenerator`
+is the *last* generated value. Previously, Hibernate stored the *next* sequence value.
+
+For backward compatibility, a new setting called `hibernate.id.generator.stored_last_used` was introduced, which gives you the opportunity to fall back to the old Hibernate behavior.
+
+[NOTE]
+====
+Existing applications migrating to 5.3 and using the `@TableGenerator` have to set the `hibernate.id.generator.stored_last_used` configuration property to `false`.
+====
+
+=== Query parameters
+
+Method `org.hibernate.type.Type getType()` in `org.hibernate.query.QueryParameter` was renamed to `getHibernateType()`.
+
+This was done in order to allow for the re-introduction of `Class<T> getType()` in a sub-interface, `org.hibernate.procedure.ParameterRegistration`. That second method had been removed in 5.2, breaking compatibility with 5.1.
+
+=== Second-level cache provider SPI changes
+
+Hibernate's second-level cache SPI needed to be redesigned to match with expectations between
+Hibernate and the various caching providers.  And the SPI did not really clarify the intention.
+These mis-matched expectations certainly had the potential to lead to bugs.  Although it was
+originally slated for 6.0 to delay the SPI changes, we decided to back-port the work to
+5.3 to address a number of bugs that could have been avoided with a clarified SPI.
+
+The changes also allow the caching providers to perform serious optimizations based on
+the users configuration of domain data caching in Hibernate.
+
+Details can be seen on the https://hibernate.atlassian.net/browse/HHH-11356[HHH-11356] Jira issue
+
+One potential upgrade concern is any custom `org.hibernate.cache.spi.QueryCacheFactory` implementations.
+`org.hibernate.cache.spi.QueryCacheFactory` was meant as a means to allow service providers the
+ability to define query result caching, generally with more stale-tolerant query result invalidation handling.
+However, the contract also bound it to the old second level cache contracts so they had to be
+updated.  Its responsibilities also changed so we also decided to "rename it" to
+`org.hibernate.cache.spi.TimestampsCacheFactory`
+
+Another specific change to be aware of is accessing cache entries via `SecondLevelCacheStatistics#getEntries`
+and `NaturalIdCacheStatistics#getEntries`.  These methods have been deprecated, however the new
+caching SPI does not really require caching providers to support this.  As of 5.3 these methods
+inherently return an empty Map (`Collections#emptyMap`).  This has always been something that providers
+did not implement "correctly" anyway
+
+
+=== Statistics changes
+
+The change for HHH-11356 required changes in its consumers.  One such consumer is the Hibernate
+Statistics system....
+
+=== Native (non-JPA) Pagination changes
+
+When hibernate-entitymanager module was merged into hibernate-core in Hibernate ORM 5.2, the contracts for the 
+following pre-existing `org.hibernate.Query` methods were changed to be specified by JPA `javax.persistence.Query` 
+methods: `getFirstResult()`, `setFirstResult(int)`, `getMaxResults()`, and `setMaxResults()`.
+
+In 5.3.2, the following methods were temporarily added to
+http://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/Query.html[`org.hibernate.Query`] to make it
+easier to migrate native applications from Hibernate ORM 5.1 to 5.3, and maintain 5.1 pagination behavior:
+
+* http://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/Query.html#setHibernateFirstResult-int-[`setHibernateFirstResult(int)`] 
+behaves the same as the 5.1 version of `setFirstResult()`, with a small difference -- calling 
+`setHibernateFirstResult(int)` with a negative value will result in `getHibernateFirstResult()` returning 0, instead 
+of the negative value. Note that this behavior differs from JPA in that `javax.persistence.Query.setFirstResult(int)` 
+throws `IllegalArgumentException` when called with a negative value.
+* http://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/Query.html#getHibernateFirstResult--[`getHibernateFirstResult()`] 
+behaves the same as the 5.1 version of `getFirstResult()`, except for the difference mentioned above when `setHibernateFirstResult(int)` is called with a negative number. This method returns `null` if no value was set 
+via `setHibernateFirstResult(int)` (or `setFirstResult(int)`). Note that this behavior differs from JPA in that
+`javax.persistence.Query.getFirstResult()` returns 0 when uninitialized.
+* http://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/Query.html#setHibernateMaxResults-int-[`setHibernateMaxResults`] 
+behaves the same as the 5.1 version of `setMaxResults()`; setting a value less than or equal to 0 is 
+considered uninitialized, resulting in *no limit* on the number of results. Note that this behavior differs 
+from JPA `javax.persistence.Query.setMaxResults(int)`, which, when called with a negative value, 
+throws `IllegalArgumentException`, and when called with a value of 0, indicates that the query should return 
+*no results*.
+* http://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/Query.html#getHibernateMaxResults--[`getHibernateMaxResults`]
+behaves the same as the 5.1 version of `#getMaxResults`. This method returns `null` if uninitialized or
+a value less than or equal to 0 was set via `setHibernateMaxResults(int)` (or `setMaxResults(int)`).
+Note that this behavior differs from JPA in that `javax.persistence.Query.getMaxResults() returns 
+`Integer.MAX_VALUE` when uninitialized.
+
+These methods are deprecated, and will be removed in a future version. To be portable with future Hibernate 
+versions, applications should be changed to use the JPA methods.
+
+=== Drop hibernate-infinispan module
+
+Support for using Infinispan as a Hibernate 2nd-level cache provider has been moved to the Infinispan project so
+the `hibernate-infinispan` module has been dropped.
+
+A relocation pom which is pointing to `org.infinispan:infinispan-hibernate-cache` dependency is still generated,
+therefore, avoiding the need of updating any library dependency.
+
+[WARN]
+====
+The relocation pom may be dropped in a future release.
+====
+
+
+=== EnhancementTask changes
+
+The API of the `org.hibernate.tool.enhance.EnhancementTask` Ant task was changed, specifically
+the `#addFileset` method was dropped in favor of `#setBase` and `#setDir`
+
+See details on the https://hibernate.atlassian.net/browse/HHH-11795[HHH-11795] Jira issue.
+
+The main gist is that EnhancementTask was fixed (through a contribution) to actually work with
+`Enhancer` from `BytecodeProvider`.  Previously it had not.  And part of fixing that required this
+change.
+
+
+=== Many-to-one association in embeddable collection elements and composite IDs
+
+A bug introduced in 4.3 caused many-to-one associations in embeddable collection elements and
+composite IDs to be eagerly fetched, even when explicitly mapped as lazy.
+
+This bug does not affect many-to-one associations that are not in a composite ID or embeddable
+collection element.
+
+In 5.3.2, this bug was fixed. As a result, such associations will be fetched as specified
+by their mappings.
+
+Many-to-one associations mapped by using native HBM xml are lazy by default. In order to keep
+the associations eager in 5.3.2 and later, mappings will need to explicitly specify that
+they are non-lazy.
+
+When mapped with annotations, many-to-one associations use `FetchType.EAGER` by default.
+Starting in 5.3.2, if an association is mapped with `FetchType.LAZY`, the assocation will
+be lazily fetched, as expected.
+
+See details on the https://hibernate.atlassian.net/browse/HHH-12687[HHH-12687] Jira issue.
+
+=== JpaIntegrator removed
+
+JPA and native implementations of Hibernate event listeners were unified (see https://hibernate.atlassian.net/browse/HHH-11264)
+making the `org.hibernate.jpa.event.spi.JpaIntegrator` no longer needed.
+
+[NOTE]
+====
+Existing applications migrating to 5.3 with classes extending `org.hibernate.jpa.event.spi.JpaIntegrator` have to change these classes to implement the `org.hibernate.integrator.spi.Integrator` interface.
+====
+
+=== Persister changes
+
+Due to changes to SPIs for persisters (in `org.hibernate.persister` package), custom persisters will need
+to be updated to follow the new SPIs.
+
+=== 5.1 -> 5.3 exception handling changes
+
+In 5.3 (as well as 5.2), exception handling for a `SessionFactory` built via Hibernate's native
+bootstrapping wraps or converts `HibernateException` according to the JPA specification unless the
+operation is Hibernate-specific (e.g., `Session#save`, `Session#saveOrUpdate`).
+
+In 5.3.3, a property was added, `hibernate.native_exception_handling_51_compliance`, which
+indicates if exception handling for a `SessionFactory` built via Hibernate's native bootstrapping
+should behave the same as native exception handling in Hibernate ORM 5.1. When set to `true`,
+`HibernateException` will not be wrapped or converted according to the JPA specification. This
+setting will be ignored for a `SessionFactory` built via JPA bootstrapping.
+
+=== 5.3 -> 6.0 compatibility changes
+
+The original driving force behind these series of changes is an effort to be as proactive as possible
+about designing compatibility between 5.3 and 6.0.
+
+==== Type system changes
+
+Use of NavigableRole, back-ported from 6.0 rather than plain String
