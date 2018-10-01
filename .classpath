@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-jipijapa/src/test/java/|Java-Day-5/Exercises/AddressBook/|Java-Day-12/Examples/src/|Java-Day-8/Assignment/MiniCompiler/|Java-Day-5/Exercises/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-envers/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-proxool/src/main/java/|modularity/com.hello.client/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-jcache/src/test/java/|Java-Day-4/Assignment/|HbnPrj3/src/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-ehcache/src/test/java/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/envers/src/test/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-spatial/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/tooling/metamodel-generator/src/test/java/|Java-Day-2/exercise/|Java-Day-14/src/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-agroal/src/test/java/|Java-Day-7/Examples/|modularity/com.hello/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-core/src/test/java/|Java-Day-8/Exercises/|Java-Day-4/Examples/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-proxool/src/test/java/|Java-Day-11/ThreadExample3/src/|Java-Day-9/Examples/|HbtLib/hibernate-release-5.3.6.Final/project/tooling/metamodel-generator/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-vibur/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/integrationguide/chapters/services/extras/override/|Java-Day-10/Exercises/MiniCompilerNew/|Java-Day-5/Assignments/|apache-tomcat-9.0.12/webapps/examples/WEB-INF/jsp/applet/|Java-Day-9/Exercises/MiniCompilerNew/|HbtLib/hibernate-release-5.3.6.Final/project/tooling/hibernate-enhance-maven-plugin/src/main/java/|Java-Day-6/Examples/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/osgi/managed-jpa/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-jcache/src/main/java/|Java-Day-4/Examples/test/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/integrationguide/chapters/services/extras/extend/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/java/|Java-Day-1/Assignment/|Java-Day-11/JavaExample4/src/|Java-Day-3/Examples/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-jipijapa/src/main/java/|Assignment/src/|Java-Day-13/src/|Java-Day-2/examples/|emailer - Copy (2)/src/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-osgi/src/test/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-testing/src/test/java/|Java-Day-7/Examples/JavaDoc/|ServletDay2/src/|Java-Day-5/Examples/|Java-Day-4/Exercise/Abstract Pattern/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/entitymanager/src/test/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-agroal/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-core/src/test/java/org/hibernate/test/stat/|Java-Day-2/assignment/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-envers/src/demo/java/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/osgi/unmanaged-native/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/basic/src/test/java/|apache-tomcat-9.0.12/webapps/docs/appdev/sample/src/|Java-Day-3/Exercises/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-c3p0/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-hikaricp/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-spatial/src/test/java/|Java-Day-10/Examples/|Java-Day-9/Assignment/MiniCompiler/|emailer_1/src/|Emailer/src/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/test/java/|Java-Day-10/Assignment/MiniCompiler2/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-envers/src/test/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-osgi/src/main/java/|Java-Day-3/Assignment/|Java-Day-9/Exercises/|javasql/src/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-ehcache/src/main/java/|Java-Day-1/Examples/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-testing/src/main/java/|Java-Day-3/Assignment/BankAtmSystem/|Java-Day-11/Examples/ThreadExample1/src/|Java-Day-7/Exercise/|Java-Day-6/Exercises/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-c3p0/src/test/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-orm-modules/src/test/java/|emailer - Copy/src/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/annotations/src/test/java/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-core/src/main/java/|HbtLib/hibernate-release-5.3.6.Final/project/tooling/hibernate-enhance-maven-plugin/src/test/java/|Java-Day-4/Exercise/|HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/osgi/unmanaged-jpa/src/main/java/|Java-Day-5/Assignments/MiniCompilerNew/|Servelet1/src/|apache-tomcat-9.0.12/webapps/examples/WEB-INF/classes/|Java-Day-10/Exercises/|Hbnprj2/src/|apache-tomcat-9.0.12/webapps/examples/jsp/plugin/applet/|Java-Day-5/Assignments/MiniCompiler/|Java-Day-1/Exercise/|ServletDay3/src/|HbtLib/hibernate-release-5.3.6.Final/project/tooling/hibernate-gradle-plugin/src/main/groovy/|Java-Day-8/Examples/|HbnPrj1/src/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-vibur/src/test/java/|Java-Day-4/Examples/Abstract Factory Pattern/|Emailer/|HbtLib/hibernate-release-5.3.6.Final/project/hibernate-hikaricp/src/test/java/" kind="src" path=""/>
+	<classpathentry kind="src" path="apache-tomcat-9.0.12/webapps/docs/appdev/sample/src"/>
+	<classpathentry kind="src" path="apache-tomcat-9.0.12/webapps/examples/jsp/plugin/applet"/>
+	<classpathentry kind="src" path="apache-tomcat-9.0.12/webapps/examples/WEB-INF/classes"/>
+	<classpathentry kind="src" path="apache-tomcat-9.0.12/webapps/examples/WEB-INF/jsp/applet"/>
+	<classpathentry kind="src" path="Assignment/src"/>
+	<classpathentry excluding="src/" kind="src" path="Emailer"/>
+	<classpathentry kind="src" path="emailer - Copy (2)/src"/>
+	<classpathentry kind="src" path="emailer - Copy/src"/>
+	<classpathentry kind="src" path="emailer_1/src"/>
+	<classpathentry kind="src" path="Emailer/src"/>
+	<classpathentry kind="src" path="HbnPrj1/src"/>
+	<classpathentry kind="src" path="Hbnprj2/src"/>
+	<classpathentry kind="src" path="HbnPrj3/src"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/integrationguide/chapters/services/extras/extend"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/integrationguide/chapters/services/extras/override"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/annotations/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/basic/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/entitymanager/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/envers/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/osgi/managed-jpa/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/osgi/unmanaged-jpa/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/asciidoc/quickstart/tutorials/osgi/unmanaged-native/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/documentation/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-agroal/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-agroal/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-c3p0/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-c3p0/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-core/src/main/java"/>
+	<classpathentry excluding="org/hibernate/test/stat/" kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-core/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-core/src/test/java/org/hibernate/test/stat"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-ehcache/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-ehcache/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-envers/src/demo/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-envers/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-envers/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-hikaricp/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-hikaricp/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-jcache/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-jcache/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-jipijapa/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-jipijapa/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-orm-modules/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-osgi/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-osgi/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-proxool/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-proxool/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-spatial/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-spatial/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-testing/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-testing/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-vibur/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/hibernate-vibur/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/tooling/hibernate-enhance-maven-plugin/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/tooling/hibernate-enhance-maven-plugin/src/test/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/tooling/hibernate-gradle-plugin/src/main/groovy"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/tooling/metamodel-generator/src/main/java"/>
+	<classpathentry kind="src" path="HbtLib/hibernate-release-5.3.6.Final/project/tooling/metamodel-generator/src/test/java"/>
+	<classpathentry kind="src" path="Java-Day-1/Assignment"/>
+	<classpathentry kind="src" path="Java-Day-1/Examples"/>
+	<classpathentry kind="src" path="Java-Day-1/Exercise"/>
+	<classpathentry kind="src" path="Java-Day-10/Assignment/MiniCompiler2"/>
+	<classpathentry kind="src" path="Java-Day-10/Examples"/>
+	<classpathentry excluding="MiniCompilerNew/" kind="src" path="Java-Day-10/Exercises"/>
+	<classpathentry kind="src" path="Java-Day-10/Exercises/MiniCompilerNew"/>
+	<classpathentry kind="src" path="Java-Day-11/Examples/ThreadExample1/src"/>
+	<classpathentry kind="src" path="Java-Day-11/JavaExample4/src"/>
+	<classpathentry kind="src" path="Java-Day-11/ThreadExample3/src"/>
+	<classpathentry kind="src" path="Java-Day-12/Examples/src"/>
+	<classpathentry kind="src" path="Java-Day-13/src"/>
+	<classpathentry kind="src" path="Java-Day-14/src"/>
+	<classpathentry kind="src" path="Java-Day-2/assignment"/>
+	<classpathentry kind="src" path="Java-Day-2/examples"/>
+	<classpathentry kind="src" path="Java-Day-2/exercise"/>
+	<classpathentry excluding="BankAtmSystem/" kind="src" path="Java-Day-3/Assignment"/>
+	<classpathentry kind="src" path="Java-Day-3/Assignment/BankAtmSystem"/>
+	<classpathentry kind="src" path="Java-Day-3/Examples"/>
+	<classpathentry kind="src" path="Java-Day-3/Exercises"/>
+	<classpathentry kind="src" path="Java-Day-4/Assignment"/>
+	<classpathentry excluding="test/|Abstract Factory Pattern/" kind="src" path="Java-Day-4/Examples"/>
+	<classpathentry kind="src" path="Java-Day-4/Examples/Abstract Factory Pattern"/>
+	<classpathentry kind="src" path="Java-Day-4/Examples/test"/>
+	<classpathentry excluding="Abstract Pattern/" kind="src" path="Java-Day-4/Exercise"/>
+	<classpathentry kind="src" path="Java-Day-4/Exercise/Abstract Pattern"/>
+	<classpathentry excluding="MiniCompilerNew/|MiniCompiler/" kind="src" path="Java-Day-5/Assignments"/>
+	<classpathentry kind="src" path="Java-Day-5/Assignments/MiniCompiler"/>
+	<classpathentry kind="src" path="Java-Day-5/Assignments/MiniCompilerNew"/>
+	<classpathentry kind="src" path="Java-Day-5/Examples"/>
+	<classpathentry excluding="AddressBook/" kind="src" path="Java-Day-5/Exercises"/>
+	<classpathentry kind="src" path="Java-Day-5/Exercises/AddressBook"/>
+	<classpathentry kind="src" path="Java-Day-6/Examples"/>
+	<classpathentry kind="src" path="Java-Day-6/Exercises"/>
+	<classpathentry excluding="JavaDoc/" kind="src" path="Java-Day-7/Examples"/>
+	<classpathentry kind="src" path="Java-Day-7/Examples/JavaDoc"/>
+	<classpathentry kind="src" path="Java-Day-7/Exercise"/>
+	<classpathentry kind="src" path="Java-Day-8/Assignment/MiniCompiler"/>
+	<classpathentry kind="src" path="Java-Day-8/Examples"/>
+	<classpathentry kind="src" path="Java-Day-8/Exercises"/>
+	<classpathentry kind="src" path="Java-Day-9/Assignment/MiniCompiler"/>
+	<classpathentry kind="src" path="Java-Day-9/Examples"/>
+	<classpathentry excluding="MiniCompilerNew/" kind="src" path="Java-Day-9/Exercises"/>
+	<classpathentry kind="src" path="Java-Day-9/Exercises/MiniCompilerNew"/>
+	<classpathentry kind="src" path="javasql/src"/>
+	<classpathentry kind="src" path="modularity/com.hello"/>
+	<classpathentry kind="src" path="modularity/com.hello.client"/>
+	<classpathentry kind="src" path="Servelet1/src"/>
+	<classpathentry kind="src" path="ServletDay2/src"/>
+	<classpathentry kind="src" path="ServletDay3/src"/>
+	<classpathentry kind="output" path="HbnPrj3/bin"/>
+</classpath>
