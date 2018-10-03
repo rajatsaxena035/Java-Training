@@ -1,0 +1,14 @@
+Mismatches b/w relational and object models:
+1. Granularity
+2. Subtypes
+3. Identity
+4. Associtions
+5. Data Navigation
+
+Class level architecture:
+1. EntityManagerFactory
+2. EntityManager
+3. Entity
+4. EntityTransaction
+5. Persistence
+6. Query

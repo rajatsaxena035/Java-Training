@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <!-- A simple bean definition -->
+   <bean id = "address" class = "com.springcore.Address" scope="prototype" >
+   	<constructor-arg name="city" value="Varanasi" />
+   </bean>
+   
+   <bean id="student" class = "com.springcore.Student">
+   	<property name="stAddress" ref="address" />
+   </bean>
+   <bean id="teacher" class = "com.springcore.Teacher">
+   	<property name="thAddress" ref="address" />
+   </bean>
+  
+</beans>
