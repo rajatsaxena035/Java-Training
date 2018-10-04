@@ -12,4 +12,14 @@ public class Restaurant
 	{
 		System.out.println(welcomeNote);
 	}
+	
+	public void init()
+	{
+		System.out.println("init");
+	}
+	
+	public void destroy()
+	{
+		System.out.println("destroy");
+	}
 }

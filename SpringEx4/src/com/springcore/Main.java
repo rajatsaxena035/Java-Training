@@ -11,6 +11,7 @@ public class Main
 		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 		
 		Restaurant obj1 = (Restaurant)context.getBean("restaurantBean");
+		System.out.println("After init");
 		obj1.setWelcomeNote("Morning");
 		obj1.greetCustomer();
 		

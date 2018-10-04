@@ -6,6 +6,9 @@
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
    <!-- A simple bean definition -->
-   <bean id = "restaurantBean" class = "com.springcore.Restaurant" scope="prototype"/>
+   <bean id = "restaurantBean" class = "com.springcore.Restaurant" init-method="init" destroy-method="destroy" />
+  	
+  	
+  <bean id="tea" class="com.springcore.Tea"  />
   
 </beans>
