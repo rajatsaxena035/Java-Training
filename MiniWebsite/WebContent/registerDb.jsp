@@ -3,6 +3,7 @@
 
 <%
 	String username = request.getParameter("username");
+	String fullname = request.getParameter("fullname");
 	String userpass = request.getParameter("userpass");
 	String confpass = request.getParameter("confpass");
 	if(!userpass.equals(confpass))
@@ -33,9 +34,10 @@
 			}
 			else
 			{
-				PreparedStatement stmt2 = con.prepareStatement("INSERT INTO users VALUES (?,?)");
+				PreparedStatement stmt2 = con.prepareStatement("INSERT INTO users VALUES (?,?,?)");
 				stmt2.setString(1,username);
 				stmt2.setString(2,userpass);
+				stmt2.setString(3,fullname);
 				//executing queries
 				int result = stmt2.executeUpdate();
 				
@@ -44,8 +46,9 @@
 				
 				if(result==1)
 				{
+					session.setAttribute("fullname",username);
 					session.setAttribute("username",username);
-					response.sendRedirect("welcome.jsp");
+					response.sendRedirect("fetchMail.jsp?action=0");
 				}
 			}
 			

@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Register</title>
-</head>
-<body>
+
+<%@ include file="header.jsp" %>
+
 <h3>Register In NEC</h3><br/>
 
 <form action="registerDb.jsp" method="post">
-	Choose UserName <input type="text" name="username" required><br /><br />
-	Choose PassPhrase <input type="password" name="userpass" required><br /><br />
-	Confirm PassPhrase <input type="password" name="confpass" required><br /><br />
+	Name<br/>
+	<input type="text" name="fullname" required><br /><br />
+	Email Id<br/>
+	<input type="text" name="username" required><br /><br />
+	PassPhrase<br/>
+	<input type="password" name="userpass" required><br /><br />
+	Confirm PassPhrase<br/> 
+	<input type="password" name="confpass" required><br /><br />
 	<input type="submit" value="Register"><br /><br />
 </form>
 
@@ -33,5 +34,4 @@
 	}
 %>
 
-</body>
-</html>
+<%@ include file="footer.jsp" %>
