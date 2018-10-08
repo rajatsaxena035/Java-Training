@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+	function displayCookeies()
+	{
+		var fname=getCookie("firstname");
+		if(fname=null) {fname=""}
+		if (fname!="") {fname="firstname="+fname;}
+		var lname=getCookie("lastname");
+		if(lname==null) {lname=""}
+		if (lname!="") {lname="lasttname="+lname;}
+		alert(fname+" "+lname);
+	}
+	
+	function getCookie(name)
+	{
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++)
+		{
+			var c = ca[i];
+			while(c.charAt(0)=='') c=c.substring(1);
+			if(c.indexOf(nameEQ)!=-1) return c.substring(nameEQ)
+		}
+	}
+</script>
+</body>
+</html>

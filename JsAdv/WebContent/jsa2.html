@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form onsubmit="return checkPassword();">
+	Name: <input type="username" name="username" /><br><br>
+	Password: <input type="password" name="password" id="pass"/><br><br>
+	<input type="submit" /><br><br>
+</form>
+<div id="error">
+	
+</div>
+
+<script>
+	function checkPassword()
+	{
+		var pass = document.getElementById("pass").value;
+		console.log(pass);
+		var patt = new RegExp("[A-Za-z]");
+		var error=0;
+		document.getElementById("error").innerHTML = "";
+		var text = ""; 
+		if(!patt.test(pass.charAt(0)))
+		{
+			error=1;
+			console.log("one");
+			document.getElementById("error").innerHTML = "Starting char not alpha. <br>";
+			text = document.getElementById("error").innerHTML;
+		}
+		if(pass.length < 8)
+		{
+			error=1;
+			console.log("two");
+			document.getElementById("error").innerHTML = text +  "Less than 8 chars";
+		}
+		if(error===1)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+</script>
+</body>
+</html>
