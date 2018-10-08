@@ -11,7 +11,7 @@
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 	
 		//creating connection
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr2","hr2");
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
 		PreparedStatement stmt = con.prepareStatement("SELECT fullname FROM users WHERE username=? AND password=?");
 		stmt.setString(1,username);
 		stmt.setString(2,userpass);

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<select id="jump-menu" onChange="openDir()">
+	<option value="None">Select Search Engine</option>
+	<option value="http://google.com">Google</option>
+	<option value="http://yahoo.com">Yahoo</option>
+	<option value="http://bing.com">Bing</option>
+</select>
+<script>
+	function openDir()
+	{
+		var search = document.getElementById("jump-menu").value;
+		if(search!=="None" && search!=='')
+		{
+			window.location.href =search;
+		}
+	}
+</script>
+</body>
+</html>

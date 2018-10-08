@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="myForm" action="js12.html" onsubmit="return validateForm()" method="post">
+	<input type="text" name="fname">
+	<input type="submit" value="Submit">
+</form>
+
+<script type="text/javascript">
+	function validateForm() {
+		var x = document.forms["myForm"]["fname"].value;
+		if(x==null || x== '')
+		{
+			alert("Name must be filled out");
+			return false;
+		}
+	}
+</script>
+</body>
+</html>

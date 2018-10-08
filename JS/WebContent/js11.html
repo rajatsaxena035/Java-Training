@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<img id="imgr" width="600px" src="tech.jpeg" onmouseover="randomImage();" >
+<script>
+function randomImage() {
+		var img = ["tech2.jpeg","tech3.jpg","tech4.jpg","tech5.jpg","tech6.jpg","tech7.gif","tech8.png"];
+		var max = img.length;
+	  	var ri = Math.floor(Math.random() * Math.floor(max));
+	  	document.getElementById("imgr").src = img[ri];
+	}
+</script>
+</body>
+</html>

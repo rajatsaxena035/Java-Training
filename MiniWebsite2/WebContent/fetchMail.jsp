@@ -1,13 +1,7 @@
-<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ include file="headerMail.jsp" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Mails</title>
-</head>
-<body>
+<%@ page import="java.sql.*" %>
+ 
 <%
 	String s = (String)session.getAttribute("username");
 	if(s==null)
@@ -18,12 +12,7 @@
 	{
 	
 %>
-Welcome <%=s%> 
-<span style="margin-right:10px; margin-left:10px;">|</span>
-<a href="welcome.jsp"> Home</a>
-<span style="margin-right:10px; margin-left:10px;">|</span>
-<a href="logout.jsp"> Logout</a>
-<br/><br/>
+
     
 <%
 	//register the driver class
@@ -37,17 +26,17 @@ Welcome <%=s%>
 		int action = Integer.parseInt(request.getParameter("action"));
 		String label = "";
 		PreparedStatement stmt=null;
-		String own_mail = session.getAttribute("username")+"@nec.com";
+		String own_mail = (String)session.getAttribute("username");
 		if(action==0)
 		{
-			out.print("<h3>Inbox Mails</h3>");
+			out.print("<h3>Inbox Mails</h3><br>");
 			label="From";
 			stmt = con.prepareStatement("SELECT from_email as email,subject,content FROM emails WHERE to_email=? AND flag=0");
 		}
 		else if(action==1 || action==2)
 		{
-			if(action==1) out.print("<h3>Sent Mails</h3>");
-			else if(action==2) out.print("<h3>Draft Mails</h3>");
+			if(action==1) out.print("<h3>Sent Mails</h3><br>");
+			else if(action==2) out.print("<h3>Draft Mails</h3><br>");
 			label="To";
 			stmt = con.prepareStatement("SELECT to_email as email,subject,content FROM emails WHERE from_email=? AND flag=?");
 			stmt.setInt(2,action-1);
@@ -99,5 +88,4 @@ Welcome <%=s%>
 	}
 %>    
 
-</body>
-</html>
+<%@ include file="footer.jsp" %>

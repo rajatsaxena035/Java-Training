@@ -16,9 +16,9 @@ public class MainApp {
 		//Resource resource = new ClassPathResource("Beans.xml");
 		//BeanFactory factory = new XmlBeanFactory(resource);
 		
-		BeanFactory factory = context;
+		//BeanFactory factory = context;
 		
-		HelloWorld obj = (HelloWorld)factory.getBean("helloWorld");
+		HelloWorld obj = (HelloWorld)context.getBean("helloWorld");
 		obj.getMessage();
 	}
 }
