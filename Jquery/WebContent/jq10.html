@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p>Bye</p>
+<ol>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+</ol>
+<button id="b1">para</button>
+<button id="b2">list</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#b1").click(function(){
+			$("p").append("<b> Hello </b>");
+		});
+		$("#b2").click(function(){
+			$("ol").append("<li>Hello</li>");
+		});
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<input id="check1">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$("input").change(function(){
+		var input = $(this);
+		$("p").html(
+			".attr('checked'):<b>"	+ input.attr('checked') + "</b><br>" +
+			".prop('checked'):<b>"	+ input.prop('checked') + "</b><br>" +
+			".is('checked'):<b>"	+ input.is(':checked') + "</b><br>" +
+		);
+	});
+</script>
+
+</body>
+</html>

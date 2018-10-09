@@ -26,7 +26,7 @@
 		int action = Integer.parseInt(request.getParameter("action"));
 		String label = "";
 		PreparedStatement stmt=null;
-		String own_mail = (String)session.getAttribute("username");
+		String own_mail = (String)session.getAttribute("username")+"@nec.com";
 		if(action==0)
 		{
 			out.print("<h3>Inbox Mails</h3><br>");

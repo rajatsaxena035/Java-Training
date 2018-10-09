@@ -1,3 +1,5 @@
+package com.website;
+
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -14,7 +16,7 @@ public class JavaEmail {
 	Session mailSession;
 	MimeMessage emailMessage;
 
-	public static void main(String args[]) throws AddressException,
+	public static void main() throws AddressException,
 			MessagingException {
 
 		JavaEmail javaEmail = new JavaEmail();
@@ -56,8 +58,8 @@ public class JavaEmail {
 
 	public void sendEmail() throws AddressException, MessagingException {
 
-		String emailHost = "smtp.office365.com";
-		String fromUser = "rajat.saxena";//just the id alone without @gmail.com
+		String emailHost = "smtp.gmail.com";
+		String fromUser = "rajat.saxena035";//just the id alone without @gmail.com
 		String fromUserEmailPassword = "";
 
 		Transport transport = mailSession.getTransport("smtp");

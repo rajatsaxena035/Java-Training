@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="div1" style="background-color:red; height:100px;">
+</div>
+
+<div id="div2" style="background-color:blue; height:100px;">
+</div>
+
+<div id="div3" style="background-color:pink; height:100px;">
+</div>
+
+<button>Magic</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("button").click(function(){
+			$("#div1").fadeToggle();
+			$("#div2").fadeToggle("slow");
+			$("#div3").fadeToggle(3000);
+		});
+	});
+</script>
+
+</body>
+</html>

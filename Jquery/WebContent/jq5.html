@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<button>Click</button>
+<p>Para</p>
+<p>Another Para</p> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("button").click(function(){
+			$("p").html("Hello <b> Jquery Paragraph </b>");
+		});
+	});
+</script>
+</body>
+</html>

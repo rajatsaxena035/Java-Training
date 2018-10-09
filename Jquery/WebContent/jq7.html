@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<p></p>
+<select id="single">
+	<option>Single</option>
+	<option>Double</option>
+	<option>Triple</option>
+	<option>Quadruple</option>
+</select>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	function displayVals()
+	{
+		var singleValues = $("#single").val();
+		$("p").html("<b>Value:</b> "+singleValues);
+	}
+	$("select").change(displayVals);
+	displayVals();
+</script>
+
+</body>
+</html>

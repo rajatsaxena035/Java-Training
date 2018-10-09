@@ -16,6 +16,8 @@
 %>
 <a >Welcome <%=n%></a>
 <span style="margin-right:10px; margin-left:10px;">|</span>
+<a ><%=u+"@nec.com"%></a>
+<span style="margin-right:10px; margin-left:10px;">|</span>
 <a href='fetchMail.jsp?action=0'>Inbox</a>
 <span style="margin-right:10px; margin-left:10px;">|</span>
 <a href='compose.jsp'>Compose</a>
@@ -24,7 +26,7 @@
 <span style="margin-right:10px; margin-left:10px;">|</span>
 <a href='fetchMail.jsp?action=2'>Draft</a>
 <%
-	if(u.equals("hr@nec.com"))
+	if(u.equals("hr"))
 	{
 %>
 <span style="margin-right:10px; margin-left:10px;">|</span>

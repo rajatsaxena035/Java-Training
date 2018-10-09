@@ -1,7 +1,7 @@
  <%@ include file="headerMail.jsp" %>
  
 <%
-	String s = (String)session.getAttribute("username");
+	String s = (String)session.getAttribute("username")+"@nec.com";
 	if(s==null)
 	{
 		response.sendRedirect("index.jsp");

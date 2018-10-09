@@ -3,7 +3,7 @@
 
 <h3>Login To NEC</h3><br/>
 <form action="loginDb.jsp" method="post">
-	Enter Email Id<br/>
+	Enter Username<br/>
 	<input type="text" name="username" required><br /><br />
 	Enter PassPhrase<br/>
 	<input type="password" name="userpass" required><br /><br />

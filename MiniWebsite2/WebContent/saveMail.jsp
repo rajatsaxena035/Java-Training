@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-	String from = (String)session.getAttribute("username");
+	String from = (String)session.getAttribute("username")+"@nec.com";
 	String emailIds = request.getParameter("emailIds");
 	String[] to_array = emailIds.split(",");
 	String subject = request.getParameter("subject");
@@ -35,6 +35,6 @@
 	//close connection
 	con.close();
 	
-	response.sendRedirect("fetchMail.jsp?action=1");
+	response.sendRedirect("fetchMail.jsp?action="+Integer.toString(flag+1));
 
 %>

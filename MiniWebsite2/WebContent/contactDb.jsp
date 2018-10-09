@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="java.sql.*, com.website.JavaEmail" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
@@ -24,6 +24,15 @@
 	
 	//close connection
 	con.close();
+	
+	try
+	{
+		JavaEmail.main();	
+	}
+	catch(Exception e)
+	{
+		System.out.println("Mailing Error hai");
+	}
 	
 	response.sendRedirect("index.jsp");
 

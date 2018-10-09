@@ -6,7 +6,7 @@
 <form action="registerDb.jsp" method="post">
 	Name<br/>
 	<input type="text" name="fullname" required><br /><br />
-	Email Id<br/>
+	Username<br/>
 	<input type="text" name="username" required><br /><br />
 	PassPhrase<br/>
 	<input type="password" name="userpass" required><br /><br />

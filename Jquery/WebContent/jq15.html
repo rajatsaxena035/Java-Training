@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<button>Click</button>
+<div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("button").click(function(){
+			$.get("demo.txt", function(data, status){
+				$("div").html(data+"\n"+status);
+			});
+		});
+	});
+</script>
+</body>
+</html>
