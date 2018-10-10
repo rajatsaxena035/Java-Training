@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+</head>
+<body>
+
+	<div data-ng-app="" data-ng-init="countries = [{locale:'en-FR',name:'France'},{locale:'en-AU',name:'Australia'}]">
+		
+		<p>Enter your Name : <input type="text" data-ng-model="name"></p>
+		<p>Hello <span data-ng-bind="name"></span></p>
+		
+		<ol>
+			<li data-ng-repeat="count in countries"> {{'Country:'+count.name+',Locale:'+count.locale}} </li>
+		</ol>
+	</div>
+
+
+</body>
+</html>

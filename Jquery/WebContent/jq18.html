@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	var text = 	'{'+ 
+						'"employees" : ['+
+							'{'+
+								'"firstName" : "Rajat",'+
+								'"lastName" : "Saxena"'+
+							'},'+
+							'{'+
+								'"firstName" : "Bill",'+
+								'"lastName" : "Gates"'+
+							'},'+
+							'{'+
+								'"firstName" : "Elon",'+
+								'"lastName" : "Musk"'+
+							'}'+		
+						']'+
+					'}';
+				
+	obj = JSON.parse(text);
+	$("#demo").html(obj.employees[1].firstName+" "+obj.employees[1].lastName);	
+</script>
+
+</body>
+</html>
