@@ -1,0 +1,57 @@
+CREATE TABLE so_users
+(
+id NUMBER,
+name VARCHAR2(100),
+email VARCHAR2(100),
+pass VARCHAR2(100),
+repo NUMBER
+);
+
+
+CREATE SEQUENCE sq_users
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1;
+
+=================================
+
+CREATE TABLE so_domains
+(
+user_id NUMBER,
+domain VARCHAR2(50),
+flag NUMBER
+);
+
+===============================
+
+CREATE TABLE so_questions
+(
+id NUMBER,
+user_id NUMBER,
+subject VARCHAR2(200),
+content VARCHAR2(1000)
+);
+
+
+CREATE SEQUENCE sq_questions
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1;
+
+=============================
+
+CREATE TABLE so_answers
+(
+id NUMBER,
+user_id NUMBER,
+ques_id VARCHAR2(200),
+content VARCHAR2(1000)
+);
+
+
+CREATE SEQUENCE sq_answers
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1;
+
+=============================

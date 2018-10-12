@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script>
+	var app = angular.module("myApp",["ngRoute"]);
+	
+	app.config(function($routeProvider){
+		$routeProvider
+		.when("/",{templateUrl : "ng16.html", })
+		.when("/london",{templateUrl : "london.html", controller:"londonCtrl"});
+	});
+	
+	app.controller("londonCtrl", function($scope){
+		$scope.msg="Londonnnnnn";
+	});
+</script>
+
+</head>
+<body ng-app="myApp">
+	<a href="#/!">Main</a>
+	<a href="#!london">London</a>
+	<div ng-view></div>
+</body>
+</html>

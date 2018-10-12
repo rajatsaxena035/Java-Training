@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script>
+	var mainApp = angular.module("mainApp",[]);
+	
+	mainApp.factory('MathService',function(){
+		 var factory={};
+		 factory.multiply = function(a,b){
+			 return a*b;
+		 }
+		 return factory;
+	});
+	
+	mainApp.service('CalcService', function(MathService){
+		this.square = function(a){
+			return MathService.multiply(a,a);
+		}
+	});
+	
+	mainApp.controller('CalcController', function($scope, CalcService){
+		$scope.square = function(){
+			$scope.result = CalcService.square($scope.number);
+		}
+	});
+	
+</script>
+</head>
+<body ng-app="mainApp" ng-controller="CalcController">
+
+	<input type="number" ng-model="number" />
+	<button ng-click="square()">Square</button>
+	<p>{{result}}</p>
+
+</body>
+</html>

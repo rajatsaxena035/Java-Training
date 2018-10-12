@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script>
+
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl', function($scope, $http){
+		$http.get("ng11.html").then(function(response){
+			$scope.myWelcome = response.data;
+		});
+	});
+	
+</script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+	<p>{{myWelcome}}</p>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script>
+	angular.module('myApp',[]).controller('planetCtrl', function($scope){
+		$scope.planets=['Mercury','Venus','Earth','Mars','Jupiter','Saturn','Neptune','Uranus','Pluto'];
+	});
+</script>
+
+</head>
+<body ng-app="myApp" ng-controller="planetCtrl">
+	<input name="searchPlanet" ng-model="searchedplanet" />
+	<ol>
+		<li ng-repeat="x in planets | filter:searchedplanet">{{x}}</li>
+	</ol>
+</body>
+</html>
