@@ -28,7 +28,7 @@ CREATE TABLE so_questions
 (
 id NUMBER,
 user_id NUMBER,
-domain VARCHAR2(50)
+domain VARCHAR2(50),
 subject VARCHAR2(200),
 content VARCHAR2(1000)
 );
@@ -56,3 +56,8 @@ START WITH 1
 INCREMENT BY 1;
 
 =============================
+
+CREATE table so_domains_list
+(
+name VARCHAR2(30)
+);

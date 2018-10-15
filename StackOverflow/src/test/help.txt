@@ -1,0 +1,34 @@
+DB Methods:
+==============================
+
+* Login:
+	UserMethods.login();
+	
+* Register:
+	UserMethods.exist();
+	UserMethods.register();
+
+* Add Domain
+	UserMethods.domain();
+	
+===============================
+	
+* Search Question:
+	QuestionMethods.searchQuestions();
+	
+* Ask Question:
+	QuestionMethods.addQuestion();
+	
+* My Questions:
+	QuestionMethods.myQuestions();
+	
+* Get a particular question:
+	QuestionMethods.getQuestion();
+	
+================================
+
+* Submit answer:
+	AnswerMethods.submitAnswer();
+
+* Get all answers of a particular question:
+	AnswerMethods.getAnswers();

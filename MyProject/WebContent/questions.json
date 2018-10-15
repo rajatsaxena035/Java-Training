@@ -1,0 +1,52 @@
+[
+    {
+        "title":"When did the programming language C++ came out?",
+        "choices":[
+            1997,
+            1995,
+            2000,
+            1998
+        ],
+        "correctAnswer":3
+    },
+    {
+        "title":"When Node.js came out?",
+        "choices":[
+            2010,
+            2011,
+            2009,
+            2006
+        ],
+        "correctAnswer":2
+    },
+    {
+        "title":"What brand of laptop do I have?",
+        "choices":[
+            "HP",
+            "Acer",
+            "Dell",
+            "Lenovo"
+        ],
+        "correctAnswer":0
+    },
+    {
+        "title":"How old am I?",
+        "choices":[
+            12,
+            20,
+            9,
+            16
+        ],
+        "correctAnswer":3
+    },
+    {
+        "title":"How old is Google?",
+        "choices":[
+            12,
+            20,
+            18,
+            16
+        ],
+        "correctAnswer":2
+    }
+]
